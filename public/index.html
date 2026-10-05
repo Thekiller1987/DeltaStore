@@ -640,8 +640,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="cust-address">Dirección Exacta en Juigalpa *</label>
-                        <input type="text" id="cust-address" class="form-input" placeholder="Ej: Barrio Sandino, de la iglesia 2c arriba" required>
+                        <label for="cust-barrio">Barrio / Sector de Juigalpa *</label>
+                        <select id="cust-barrio" class="form-input" style="background:#0c1424; color:#ffffff; cursor:pointer;" required>
+                            <option value="Barrio Palo Alto">Barrio Palo Alto</option>
+                            <option value="Barrio Sandino" selected>Barrio Sandino</option>
+                            <option value="Barrio Panmuca">Barrio Panmuca</option>
+                            <option value="Barrio San Antonio">Barrio San Antonio</option>
+                            <option value="Barrio La Curva">Barrio La Curva</option>
+                            <option value="Barrio Héctor Ugarte">Barrio Héctor Ugarte</option>
+                            <option value="Barrio Padre Miguel">Barrio Padre Miguel</option>
+                            <option value="Barrio Diriangén">Barrio Diriangén</option>
+                            <option value="Barrio Madroño">Barrio Madroño</option>
+                            <option value="Barrio Nuevo Amanecer">Barrio Nuevo Amanecer</option>
+                            <option value="Zona Central / Parque Central">Zona Central / Parque Central</option>
+                            <option value="Salida a Managua / Las Limas">Salida a Managua / Las Limas</option>
+                            <option value="Salida a Rama / Amerrisque">Salida a Rama / Amerrisque</option>
+                            <option value="Puerto Díaz / Zona Rural">Puerto Díaz / Zona Rural Chontales</option>
+                            <option value="Otro Barrio o Comarca">Otro Barrio o Comarca</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cust-address">Dirección Exacta / Calles *</label>
+                        <input type="text" id="cust-address" class="form-input" placeholder="Ej: De la pulpería La Bendición 2c al Norte" required>
                     </div>
 
                     <div class="form-group">
@@ -667,6 +688,25 @@
                             <div class="pm-info">
                                 <strong>💵 Pago Contra Entrega en Juigalpa</strong>
                                 <small>Pagas al motorizado en efectivo (Córdobas o Dólares) al recibir tus repuestos.</small>
+                            </div>
+                        </div>
+
+                        <!-- Panel de Vuelto / Cambio Exacto para Repartidor -->
+                        <div id="cash-change-container" style="margin-top:10px; margin-bottom:12px; background:rgba(0,242,254,0.05); border:1px solid rgba(0,242,254,0.25); border-radius:8px; padding:12px;">
+                            <label style="font-size:0.8rem; color:#cbd5e1; display:block; margin-bottom:6px; font-weight:700;">
+                                💵 ¿Con cuánto pagarás? (Para que el motorizado lleve tu cambio listo):
+                            </label>
+                            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+                                <button type="button" class="btn-cash-opt active" data-cash="exact" style="background:#00f2fe; color:#040914; border:none; padding:5px 12px; border-radius:6px; font-size:0.78rem; font-weight:800; cursor:pointer;">Monto Exacto</button>
+                                <button type="button" class="btn-cash-opt" data-cash="500" style="background:rgba(255,255,255,0.08); color:#ffffff; border:1px solid rgba(255,255,255,0.2); padding:5px 12px; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">Billete C$ 500</button>
+                                <button type="button" class="btn-cash-opt" data-cash="1000" style="background:rgba(255,255,255,0.08); color:#ffffff; border:1px solid rgba(255,255,255,0.2); padding:5px 12px; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">Billete C$ 1,000</button>
+                                <button type="button" class="btn-cash-opt" data-cash="custom" style="background:rgba(255,255,255,0.08); color:#ffffff; border:1px solid rgba(255,255,255,0.2); padding:5px 12px; border-radius:6px; font-size:0.78rem; font-weight:700; cursor:pointer;">Otro Billete</button>
+                            </div>
+                            <div id="custom-cash-wrapper" style="display:none; margin-bottom:6px;">
+                                <input type="number" id="custom-cash-input" class="form-input" placeholder="Monto con el que pagarás en C$" style="padding:6px 10px; font-size:0.85rem;">
+                            </div>
+                            <div id="cash-change-display" style="font-size:0.85rem; color:#10b981; font-weight:700; display:flex; align-items:center; gap:6px;">
+                                <span>🛵</span> <span>El repartidor llevará C$ 0.00 en cambio exacto para ti.</span>
                             </div>
                         </div>
 

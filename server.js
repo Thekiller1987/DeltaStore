@@ -3,9 +3,20 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const { testConnection } = require('./src/config/db');
+// -------------------------------------------------------------
+// DELTASTORE Global Safety Shield (Crash Protection)
+// -------------------------------------------------------------
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('🛡️ [DELTASTORE Safety Shield] Unhandled Rejection:', reason);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('🛡️ [DELTASTORE Safety Shield] Uncaught Exception:', err);
+});
+
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 // Middleware
 app.use(cors());

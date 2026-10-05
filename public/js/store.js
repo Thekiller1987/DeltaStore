@@ -806,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnModalWhatsapp) {
             btnModalWhatsapp.onclick = () => {
                 const text = encodeURIComponent(`¡Hola DeltaStore Juigalpa! Me interesa el repuesto: ${p.nombre} (Código: ${p.codigo || p.id}). ¿Tienen despacho inmediato?`);
-                window.open(`https://wa.me/50588889999?text=${text}`, '_blank');
+                window.open(`https://wa.me/50589654945?text=${text}`, '_blank');
             };
         }
 
@@ -925,18 +925,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const paymentRadio = document.querySelector('input[name="metodo_pago"]:checked');
             const method = paymentRadio ? paymentRadio.value : 'contra_entrega';
 
+            const barrio = document.getElementById('cust-barrio')?.value || 'Barrio Sandino';
+            const rawNotes = document.getElementById('cust-notes')?.value.trim() || '';
+            const totalPed = getCartTotalAmount();
+            let cambioInfo = 'Paga monto exacto';
+            if (selectedCashOption === '500') cambioInfo = `Paga con billete C$ 500 (Vuelto: C$ ${(500 - totalPed).toFixed(2)})`;
+            else if (selectedCashOption === '1000') cambioInfo = `Paga con billete C$ 1,000 (Vuelto: C$ ${(1000 - totalPed).toFixed(2)})`;
+            else if (selectedCashOption === 'custom' && customCashAmount > 0) cambioInfo = `Paga con C$ ${customCashAmount.toFixed(2)} (Vuelto: C$ ${(customCashAmount - totalPed).toFixed(2)})`;
+
+            const fullNotes = `[${barrio}] | [${cambioInfo}] ${rawNotes ? '| ' + rawNotes : ''}`.trim();
+
             const payload = {
                 cliente_nombre: document.getElementById('cust-name').value.trim(),
                 cliente_telefono: document.getElementById('cust-phone').value.trim(),
                 cliente_email: document.getElementById('cust-email')?.value.trim() || 'cliente@deltastore.com',
-                direccion_exacta: document.getElementById('cust-address').value.trim(),
+                direccion_exacta: `${barrio}, ${document.getElementById('cust-address').value.trim()}`,
                 punto_referencia: document.getElementById('cust-reference').value.trim(),
                 municipio: 'Juigalpa',
                 departamento: 'Chontales',
                 tipo_entrega: 'domicilio_gratis_juigalpa',
                 metodo_pago: method,
                 comprobante_pago_base64: state.receiptBase64,
-                notas_cliente: document.getElementById('cust-notes')?.value.trim() || '',
+                notas_cliente: fullNotes,
                 items: state.cart.map(it => ({
                     producto_id: it.product_id || it.id,
                     cantidad: it.quantity
@@ -968,7 +978,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (btnWhatsappConfirm) {
                         const msg = encodeURIComponent(`¡Hola DeltaStore Juigalpa! Acabo de registrar el pedido ${orderNum} por C$ ${Number(orderTotal).toFixed(2)}. Mi dirección es: ${payload.direccion_exacta} (${payload.punto_referencia}). Tel: ${payload.cliente_telefono}`);
-                        btnWhatsappConfirm.onclick = () => window.open(`https://wa.me/50588889999?text=${msg}`, '_blank');
+                        btnWhatsappConfirm.onclick = () => window.open(`https://wa.me/50589654945?text=${msg}`, '_blank');
                     }
 
                     if (btnSuccessTrack) {
@@ -1266,4 +1276,70 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    // =============================================================
+    // LOGICA DE CAMBIO EN EFECTIVO & VUELTO (DELTASTORE JUIGALPA)
+    // =============================================================
+    let selectedCashOption = 'exact';
+    let customCashAmount = 0;
+
+    function getCartTotalAmount() {
+        return state.cart.reduce((sum, it) => sum + (it.price * it.quantity), 0);
+    }
+
+    function updateCashChangeUI() {
+        const total = getCartTotalAmount();
+        const display = document.getElementById('cash-change-display');
+        const customWrap = document.getElementById('custom-cash-wrapper');
+        if (!display) return;
+
+        let cashGiven = total;
+        if (selectedCashOption === '500') cashGiven = 500;
+        else if (selectedCashOption === '1000') cashGiven = 1000;
+        else if (selectedCashOption === 'custom') cashGiven = customCashAmount;
+
+        if (cashGiven < total && selectedCashOption !== 'exact') {
+            display.innerHTML = `<span>⚠️</span> <span style="color:#f43f5e;">El monto ingresado (C$ ${cashGiven.toFixed(2)}) es menor al total del pedido (C$ ${total.toFixed(2)}).</span>`;
+        } else {
+            const change = Math.max(0, cashGiven - total);
+            display.innerHTML = `<span>🛵</span> <span>El repartidor llevará <strong>C$ ${change.toFixed(2)}</strong> en cambio para ti.</span>`;
+        }
+    }
+
+    document.querySelectorAll('.btn-cash-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.btn-cash-opt').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.08)';
+                b.style.color = '#ffffff';
+                b.style.border = '1px solid rgba(255,255,255,0.2)';
+            });
+            btn.style.background = '#00f2fe';
+            btn.style.color = '#040914';
+            btn.style.border = 'none';
+
+            selectedCashOption = btn.dataset.cash;
+            const customWrap = document.getElementById('custom-cash-wrapper');
+            if (customWrap) {
+                customWrap.style.display = selectedCashOption === 'custom' ? 'block' : 'none';
+            }
+            updateCashChangeUI();
+        });
+    });
+
+    const customCashInp = document.getElementById('custom-cash-input');
+    if (customCashInp) {
+        customCashInp.addEventListener('input', () => {
+            customCashAmount = Math.max(0, parseFloat(customCashInp.value) || 0);
+            updateCashChangeUI();
+        });
+    }
+
+    // Actualizar cambio cuando se abre el checkout
+    if (btnProceedCheckout) {
+        btnProceedCheckout.addEventListener('click', () => {
+            setTimeout(updateCashChangeUI, 100);
+        });
+    }
+
 });
