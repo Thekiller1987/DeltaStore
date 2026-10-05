@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeltaStore Juigalpa — Repuestos de Motos & Accesorios Originales (Tipo Amazon)</title>
+    <meta name="description" content="DeltaStore Juigalpa: La tienda en línea #1 de repuestos para motocicletas en Chontales. Pistones, cilindros, frenos, cadenas, llantas y aceites con entrega rápida y envío gratis en casco urbano.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f2fe'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>">
+    
+    <!-- Fuentes Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos de Alto Impacto: Cyberpunk Dark & Amazon-Style Grid -->
+    <link rel="stylesheet" href="/css/store.css">
+    <link rel="stylesheet" href="/css/ai-widget.css">
+</head>
+<body>
+
+    <!-- ================================================================= -->
+    <!-- 1. BARRA SUPERIOR DE PROMOCIONES DELTAEXPRESS -->
+    <!-- ================================================================= -->
+    <div class="top-promo-banner">
+        <div class="container top-promo-content">
+            <div class="promo-text">
+                <span class="promo-fire">⚡</span> <strong>DELTAEXPRESS JUIGALPA:</strong> ¡Envío 100% GRATIS en compras mayores a C$ 300 en casco urbano! Despacho en menos de 45 minutos.
+            </div>
+            <div class="promo-links">
+                <span class="delivery-time">⏰ Entrega HOY si pides antes de 5:00 PM</span>
+                <span class="divider">|</span>
+                <a href="#tracking" id="btn-quick-track" class="promo-track-link">📦 Rastrear Mi Pedido</a>
+                <span class="divider">|</span>
+                <a href="/crm" class="promo-crm-link" target="_blank">💼 Panel CRM & POS</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 2. NAVEGADOR PRINCIPAL ESTILO AMAZON -->
+    <!-- ================================================================= -->
+    <header class="amazon-header">
+        <div class="container amazon-header-row">
+            
+            <!-- Logo Oficial con Vector Swoop -->
+            <a href="/" class="amazon-brand-logo">
+                <div class="logo-icon-svg" id="header-logo-container"></div>
+                <div class="brand-text">
+                    <span class="brand-name">DELTA<span class="brand-accent">STORE</span></span>
+                    <span class="brand-sub">.com.ni Juigalpa</span>
+                </div>
+            </a>
+
+            <!-- Widget "Enviar a Juigalpa" -->
+            <div class="nav-deliver-widget" id="btn-open-delivery-modal" title="Ubicación de entrega">
+                <div class="deliver-icon" id="deliver-pin-container"></div>
+                <div class="deliver-info">
+                    <span class="deliver-label">Enviar a</span>
+                    <span class="deliver-dest">Juigalpa, Chontales</span>
+                </div>
+            </div>
+
+            <!-- Mega Barra de Búsqueda Amazon -->
+            <div class="amazon-search-container">
+                <div class="amazon-search-box">
+                    <div class="search-category-dropdown">
+                        <select id="search-cat-dropdown" aria-label="Filtrar por categoría">
+                            <option value="">Todos los repuestos</option>
+                        </select>
+                        <span class="cat-dropdown-arrow">▼</span>
+                    </div>
+                    <input type="text" id="main-search-input" class="amazon-search-input" placeholder="Buscar repuesto, código OEM o modelo (ej. Pistón NS200, Pastillas FZ, Motul)..." autocomplete="off">
+                    <button id="btn-clear-search" class="btn-clear-search" style="display:none;" title="Borrar búsqueda">&times;</button>
+                    <button id="btn-main-search" class="btn-amazon-search" title="Buscar repuesto">
+                        <span id="search-icon-container"></span>
+                    </button>
+                </div>
+                <!-- Autocompletado inteligente flotante -->
+                <div id="search-suggestions-box" class="search-suggestions-box" style="display:none;"></div>
+            </div>
+
+            <!-- Acciones de Usuario Derecha -->
+            <div class="amazon-header-actions">
+                
+                <!-- Selector Moneda / País -->
+                <div class="nav-item-flag">
+                    <span class="flag-icon">🇳🇮</span>
+                    <span class="flag-code">NIO (C$)</span>
+                </div>
+
+                <!-- Cuenta & Mi Garaje -->
+                <div class="nav-item-account" id="btn-account-menu">
+                    <span class="nav-line-1">Hola, Motociclista</span>
+                    <span class="nav-line-2">Mi Garaje & Cuenta ▾</span>
+                    <!-- Dropdown flotante de cuenta -->
+                    <div class="account-dropdown-menu" id="account-dropdown">
+                        <div class="dropdown-header">
+                            <strong>Bienvenido a DeltaStore</strong>
+                            <small>Tu taller y tienda en Juigalpa</small>
+                        </div>
+                        <a href="#garaje" class="dropdown-item" id="btn-jump-garage">🛵 Mi Garaje de Motos</a>
+                        <a href="#tracking" class="dropdown-item" id="btn-jump-orders">📦 Mis Pedidos & Envíos</a>
+                        <a href="https://wa.me/50588889999" target="_blank" class="dropdown-item">💬 Contactar Asesor WhatsApp</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/crm" target="_blank" class="dropdown-item" style="color:var(--primary);">💼 Ingreso CRM Empleados</a>
+                    </div>
+                </div>
+
+                <!-- Devoluciones y Pedidos -->
+                <div class="nav-item-orders" id="btn-nav-orders">
+                    <span class="nav-line-1">Devoluciones</span>
+                    <span class="nav-line-2">& Pedidos</span>
+                </div>
+
+                <!-- Carrito de Compras Amazon Style -->
+                <button class="amazon-cart-button" id="btn-open-cart" title="Ver carrito de compras">
+                    <div class="cart-icon-wrapper">
+                        <div id="cart-icon-svg-container"></div>
+                        <span class="cart-badge-count" id="cart-badge">0</span>
+                    </div>
+                    <div class="cart-text-block">
+                        <span class="cart-label">Carrito</span>
+                        <span class="cart-price" id="cart-header-total">C$ 0.00</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- SUB-NAVBAR AMAZON (Categorías Rápidas & Enlaces de Interés) -->
+        <!-- ============================================================= -->
+        <nav class="amazon-subnav">
+            <div class="container subnav-row">
+                <button class="btn-subnav-menu" id="btn-amazon-menu">
+                    <span id="amazon-menu-icon-container"></span>
+                    <strong>Todas las Categorías</strong>
+                </button>
+                <div class="subnav-links">
+                    <button class="subnav-link" data-filter="ofertas">⚡ Ofertas Relámpago</button>
+                    <button class="subnav-link" data-filter="mas-vendidos">🏆 Los Más Vendidos</button>
+                    <button class="subnav-link" data-filter="motor">🏍️ Piezas de Motor</button>
+                    <button class="subnav-link" data-filter="frenos">🛑 Sistema de Frenos</button>
+                    <button class="subnav-link" data-filter="transmision">⛓️ Cadenas & Tracción</button>
+                    <button class="subnav-link" data-filter="aceites">🛢️ Aceites & Filtros</button>
+                    <button class="subnav-link" data-filter="garaje">🛵 Tu Garaje</button>
+                </div>
+                <div class="subnav-right-highlight">
+                    <span>📍 Tienda Física: Frente a Gasolinera Puma Juigalpa</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================================================================= -->
+    <!-- 3. MENÚ LATERAL DESLIZABLE AMAZON (DRAWER SLIDEOUT) -->
+    <!-- ================================================================= -->
+    <div class="amazon-side-menu-backdrop" id="amazon-side-backdrop"></div>
+    <aside class="amazon-side-menu" id="amazon-side-menu">
+        <div class="side-menu-header">
+            <div class="side-user-icon">👤</div>
+            <div class="side-user-title">
+                <h3>Hola, Motociclista</h3>
+                <small>Explora repuestos para tu motocicleta</small>
+            </div>
+            <button class="btn-close-side-menu" id="btn-close-side-menu">&times;</button>
+        </div>
+        <div class="side-menu-content">
+            <div class="side-menu-section">
+                <h4>Departamentos & Categorías</h4>
+                <div id="side-menu-categories-list" class="side-menu-items">
+                    <!-- Poblado dinámicamente con SVGs -->
+                </div>
+            </div>
+            <div class="side-menu-section">
+                <h4>Marcas Populares en Juigalpa</h4>
+                <div id="side-menu-brands-list" class="side-menu-items">
+                    <!-- Marcas pobladas dinámicamente -->
+                </div>
+            </div>
+            <div class="side-menu-section">
+                <h4>Ayuda & Configuración</h4>
+                <a href="#tracking" class="side-menu-link" id="btn-side-track">📦 Rastrear Envío por Código</a>
+                <a href="https://wa.me/50588889999" target="_blank" class="side-menu-link">💬 Asistencia WhatsApp Mostrador</a>
+                <a href="/crm" target="_blank" class="side-menu-link" style="color:var(--primary);">💼 Portal Administrativo CRM</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ================================================================= -->
+    <!-- 4. HERO SHOWCASE AMAZON MULTI-SLIDE & CARDS GRID -->
+    <!-- ================================================================= -->
+    <main class="main-content-layout">
+        
+        <!-- Hero Carousel Banner -->
+        <section class="amazon-hero-carousel">
+            <div class="hero-slides-wrapper" id="hero-slider">
+                <!-- Slide 1 -->
+                <div class="hero-slide active" style="background: linear-gradient(90deg, rgba(7,11,20,0.92) 0%, rgba(7,11,20,0.65) 60%, rgba(7,11,20,0.2) 100%), radial-gradient(circle at 80% 50%, rgba(0, 242, 254, 0.25) 0%, transparent 60%);">
+                    <div class="container hero-slide-inner">
+                        <div class="hero-badge-pill">
+                            <span>🛵</span> ENTREGA EL MISMO DÍA EN JUIGALPA
+                        </div>
+                        <h1 class="hero-main-heading">
+                            REPUESTOS GENUINOS & RACING <br>
+                            PARA TU <span class="text-cyan-glow">MOTOCICLETA</span>
+                        </h1>
+                        <p class="hero-sub-p">
+                            Pistones, cilindros, frenos cerámicos, kit de arrastre y bujías de iridio para Pulsar, Yamaha, Honda, Serpento y Génesis. Stock físico inmediato.
+                        </p>
+                        <div class="hero-cta-group">
+                            <a href="#catalogo" class="btn-hero-primary" id="btn-hero-explore">Explorar Catálogo Completo</a>
+                            <button class="btn-hero-secondary" id="btn-hero-garage">🛵 Seleccionar Mi Moto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amazon 4-Cards Promo Grid Overlap -->
+            <div class="container amazon-promo-overlap">
+                <div class="amazon-cards-grid">
+                    
+                    <!-- Card 1: Mi Garaje / Compatibilidad -->
+                    <div class="amazon-card-tile">
+                        <h3 class="card-tile-title">Encuentra repuestos para tu moto</h3>
+                        <div class="card-tile-body">
+                            <div class="card-mini-grid">
+                                <div class="mini-tile" data-cat="motor-cilindrada">
+                                    <div class="mini-tile-img" id="tile-icon-piston"></div>
+                                    <span>Pistones & Cilindros</span>
+                                </div>
+                                <div class="mini-tile" data-cat="frenos-pastillas">
+                                    <div class="mini-tile-img" id="tile-icon-brake"></div>
+                                    <span>Frenos & Pastillas</span>
+                                </div>
+                                <div class="mini-tile" data-cat="transmision-cadenas">
+                                    <div class="mini-tile-img" id="tile-icon-chain"></div>
+                                    <span>Kits de Arrastre</span>
+                                </div>
+                                <div class="mini-tile" data-cat="electrico-bujias">
+                                    <div class="mini-tile-img" id="tile-icon-electric"></div>
+                                    <span>Bujías & Luces</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#catalogo" class="card-tile-link">Ver repuestos compatibles →</a>
+                    </div>
+
+                    <!-- Card 2: Ofertas Relámpago con Contador -->
+                    <div class="amazon-card-tile deal-tile">
+                        <div class="deal-header">
+                            <span class="badge-deal">OFERTA DEL DÍA</span>
+                            <span class="deal-timer" id="flash-deal-timer">⏱️ Termina en 04:32:15</span>
+                        </div>
+                        <h3 class="card-tile-title">Pistón Pulsar NS200 Kit Completo</h3>
+                        <div class="deal-img-box" id="deal-img-container">
+                            <!-- Imagen o SVG del deal -->
+                        </div>
+                        <div class="deal-pricing">
+                            <span class="deal-discount">-28%</span>
+                            <span class="deal-price">C$ 890.00</span>
+                            <span class="deal-old-price">C$ 1,250.00</span>
+                        </div>
+                        <a href="#catalogo" class="card-tile-link">Aprovechar todas las ofertas →</a>
+                    </div>
+
+                    <!-- Card 3: Mantenimiento Esencial -->
+                    <div class="amazon-card-tile">
+                        <h3 class="card-tile-title">Mantenimiento & Lubricación</h3>
+                        <div class="card-tile-body">
+                            <div class="card-mini-grid">
+                                <div class="mini-tile" data-search="Motul">
+                                    <div class="mini-tile-img" id="tile-icon-oil"></div>
+                                    <span>Aceites Motul 4T</span>
+                                </div>
+                                <div class="mini-tile" data-search="Llanta">
+                                    <div class="mini-tile-img" id="tile-icon-tire"></div>
+                                    <span>Llantas de Pista</span>
+                                </div>
+                                <div class="mini-tile" data-search="Casco">
+                                    <div class="mini-tile-img" id="tile-icon-helmet"></div>
+                                    <span>Cascos Dot / Ece</span>
+                                </div>
+                                <div class="mini-tile" data-search="Amortiguador">
+                                    <div class="mini-tile-img" id="tile-icon-suspension"></div>
+                                    <span>Suspensión & Monoshock</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#catalogo" class="card-tile-link">Comprar mantenimiento →</a>
+                    </div>
+
+                    <!-- Card 4: Confianza Juigalpa & WhatsApp -->
+                    <div class="amazon-card-tile trust-tile">
+                        <h3 class="card-tile-title">¿Dudas con la compatibilidad?</h3>
+                        <p class="trust-tile-text">Nuestros mecánicos especialistas en Juigalpa verifican el modelo exacto de tu moto para que no compres piezas equivocadas.</p>
+                        <div class="trust-features-list">
+                            <div>🟢 Stock físico en mostrador</div>
+                            <div>🚀 Despacho en 45 min en Juigalpa</div>
+                            <div>💵 Pagas al recibir en tu puerta</div>
+                        </div>
+                        <a href="https://wa.me/50588889999?text=Hola%20DeltaStore%20Juigalpa,%20necesito%20cotizar%20un%20repuesto" target="_blank" class="btn-whatsapp-tile">
+                            <span>💬</span> Cotizar por WhatsApp Directo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- 5. SELECTOR DE GARAJE INTERACTIVO (YMM AMAZON GARAGE) -->
+        <!-- ============================================================= -->
+        <section class="container garage-widget-section" id="garaje">
+            <div class="garage-panel-box">
+                <div class="garage-header">
+                    <div class="garage-icon-box" id="garage-icon-container"></div>
+                    <div class="garage-titles">
+                        <h2>Tu Garaje DeltaStore: <span class="highlight">Filtra repuestos 100% compatibles</span></h2>
+                        <p>Selecciona la marca y modelo de tu moto para mostrar solo piezas garantizadas para tu máquina.</p>
+                    </div>
+                </div>
+                <div class="garage-form-row">
+                    <div class="garage-col">
+                        <label for="ymm-brand">1. Marca de tu Moto</label>
+                        <select id="ymm-brand" class="garage-select">
+                            <option value="">Cargando marcas...</option>
+                        </select>
+                    </div>
+                    <div class="garage-col">
+                        <label for="ymm-model">2. Modelo & Cilindrada</label>
+                        <select id="ymm-model" class="garage-select" disabled>
+                            <option value="">Primero selecciona marca</option>
+                        </select>
+                    </div>
+                    <div class="garage-col-actions">
+                        <button class="btn-apply-garage" id="btn-apply-ymm">
+                            <span>🔍</span> Aplicar a Mi Garaje
+                        </button>
+                        <button class="btn-reset-garage" id="btn-reset-ymm" style="display:none;">
+                            ✕ Quitar Filtro
+                        </button>
+                    </div>
+                </div>
+                <div class="active-garage-badge" id="active-motorcycle-badge" style="display:none;">
+                    <span>🏍️ Compatible con:</span>
+                    <strong id="filter-bike-name">Pulsar NS200</strong>
+                    <button id="btn-remove-bike-filter" title="Remover filtro">&times;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- 6. CUERPO PRINCIPAL: SIDEBAR DE FILTROS & GRILLA DE PRODUCTOS -->
+        <!-- ============================================================= -->
+        <section class="container catalog-section" id="catalogo">
+            <div class="catalog-layout">
+                
+                <!-- Barra Lateral de Filtros Estilo Amazon -->
+                <aside class="amazon-sidebar-filters">
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-heading">Departamentos</h4>
+                        <div class="category-pills-column" id="categories-container">
+                            <!-- Categorías inyectadas dinámicamente con iconos -->
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-heading">Entrega & Promociones</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" id="filter-free-shipping" checked>
+                            <span>⚡ DeltaExpress (Envío Gratis Juigalpa)</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" id="filter-offers-only">
+                            <span>🔥 Ofertas & Descuentos</span>
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" id="filter-in-stock" checked>
+                            <span>🟢 En Stock Inmediato</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-heading">Precio (Córdobas C$)</h4>
+                        <div class="price-range-inputs">
+                            <input type="number" id="filter-min-price" placeholder="Mínimo" class="price-input">
+                            <span>-</span>
+                            <input type="number" id="filter-max-price" placeholder="Máximo" class="price-input">
+                            <button id="btn-apply-price" class="btn-price-go">Ir</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-heading">Calificación de Clientes</h4>
+                        <div class="rating-filter-options">
+                            <button class="rating-filter-row" data-stars="4">
+                                <span class="stars-gold">★★★★☆</span> y más
+                            </button>
+                            <button class="rating-filter-row" data-stars="3">
+                                <span class="stars-gold">★★★☆☆</span> y más
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-heading">Garantía DeltaStore</h4>
+                        <div class="sidebar-trust-box">
+                            <div id="shield-icon-container"></div>
+                            <p>Todos nuestros repuestos cuentan con garantía física en Juigalpa contra defectos de fábrica.</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Área Central de Productos Amazon -->
+                <div class="catalog-main-area">
+                    
+                    <!-- Barra de Control de Resultados -->
+                    <div class="results-control-bar">
+                        <div class="results-info-text">
+                            <span id="results-count">Cargando repuestos...</span>
+                            <span class="active-tag-badge" id="active-tag-container" style="display:none;"></span>
+                        </div>
+                        <div class="results-sort-box">
+                            <label for="select-sort">Ordenar por:</label>
+                            <select id="select-sort" class="select-sort-amazon">
+                                <option value="featured">Destacados de DeltaStore</option>
+                                <option value="price-asc">Precio: De menor a mayor</option>
+                                <option value="price-desc">Precio: De mayor a menor</option>
+                                <option value="name-asc">Nombre: A a la Z</option>
+                                <option value="rating-desc">Mejor Calificados</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Grilla de Productos -->
+                    <div class="products-grid" id="products-grid">
+                        <!-- Skeleton loading cards -->
+                        <div class="product-skeleton-card"></div>
+                        <div class="product-skeleton-card"></div>
+                        <div class="product-skeleton-card"></div>
+                        <div class="product-skeleton-card"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- 7. CAROUSEL CROSS-SELLING: "LOS CLIENTES TAMBIÉN COMPRARON" -->
+        <!-- ============================================================= -->
+        <section class="container cross-selling-section">
+            <div class="cross-selling-box">
+                <div class="section-title-row">
+                    <h3>Los clientes que vieron estos repuestos también compraron</h3>
+                    <a href="#catalogo" class="link-more-deals">Ver más repuestos recomendados →</a>
+                </div>
+                <div class="cross-selling-carousel" id="cross-selling-grid">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- 8. MODAL AMAZON-STYLE PRODUCT VIEW & BUY BOX -->
+    <!-- ================================================================= -->
+    <div class="modal-backdrop" id="product-modal">
+        <div class="modal-amazon-content">
+            <button class="modal-close-btn" id="btn-close-product-modal">&times;</button>
+            <div class="amazon-pview-grid">
+                
+                <!-- Galería Izquierda -->
+                <div class="amazon-pview-gallery">
+                    <div class="gallery-main-img" id="mp-img-container">
+                        <!-- Imagen Base64 o SVG HD -->
+                    </div>
+                    <div class="gallery-badges-row">
+                        <span class="pview-badge oem">Repuesto Genuino</span>
+                        <span class="pview-badge stock">🟢 En Bodega Juigalpa</span>
+                    </div>
+                </div>
+
+                <!-- Detalles Centrales -->
+                <div class="amazon-pview-center">
+                    <span class="pview-brand" id="mp-brand-tag">BAJAJ / YAMAHA COMPATIBLE</span>
+                    <h2 class="pview-title" id="mp-title">Pistón de Motor Racing</h2>
+                    <div class="pview-rating-row" id="mp-rating-container">
+                        <!-- Estrellas inyectadas -->
+                        <span class="pview-review-count">94 calificaciones verificadas</span>
+                    </div>
+                    <div class="pview-compat-box">
+                        <strong>Compatibilidad:</strong> <span id="mp-compat">Pulsar NS200 • Universal</span>
+                    </div>
+                    <div class="pview-code-box">
+                        <strong>Código OEM:</strong> <span id="mp-code">REP-001</span>
+                    </div>
+
+                    <div class="pview-bullet-specs">
+                        <h4>Acerca de este repuesto:</h4>
+                        <ul id="mp-specs-list">
+                            <li>Fabricado en aleación de aluminio reforzado de alta disipación térmica.</li>
+                            <li>Tolerancias micrométricas para evitar cabeceos o ruidos en cilindro.</li>
+                            <li>Incluye pasador templado y seguros de retención de acero flexible.</li>
+                            <li>Probado en banco de pruebas para motocicletas en clima cálido de Juigalpa.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pview-desc-text" id="mp-desc">
+                        Repuesto de alta calidad y rendimiento para motocicletas en Juigalpa, Chontales.
+                    </div>
+                </div>
+
+                <!-- Buy Box Derecha (Amazon Buy Box) -->
+                <div class="amazon-pview-buybox">
+                    <div class="buybox-price-row">
+                        <span class="buybox-currency">C$</span>
+                        <span class="buybox-amount" id="mp-price">890.00</span>
+                    </div>
+                    <div class="buybox-oldprice" id="mp-old-price">C$ 1,100.00</div>
+
+                    <div class="buybox-delivery-promise">
+                        <div class="promise-icon">⚡</div>
+                        <div class="promise-text">
+                            <strong>Entrega GRATIS Hoy en Juigalpa</strong> si ordenas dentro de las próximas <strong>3 hrs 20 mins</strong>.
+                        </div>
+                    </div>
+
+                    <div class="buybox-stock-status" id="mp-stock">
+                        🟢 En Stock Inmediato
+                    </div>
+
+                    <div class="buybox-seller-info">
+                        <div>Vendido y enviado por: <strong>DeltaStore Juigalpa</strong></div>
+                        <div>Soporte local: <strong>Garantía de cambio 30 días</strong></div>
+                    </div>
+
+                    <!-- Selector de Cantidad -->
+                    <div class="buybox-qty-picker">
+                        <label>Cantidad:</label>
+                        <div class="qty-stepper-amazon">
+                            <button id="btn-qty-minus">-</button>
+                            <span id="mp-qty-value">1</span>
+                            <button id="btn-qty-plus">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción Amazon -->
+                    <button class="btn-buybox-cart" id="btn-add-modal-cart">
+                        <span>🛒</span> Agregar al Carrito
+                    </button>
+                    <button class="btn-buybox-now" id="btn-buy-now">
+                        <span>⚡</span> Comprar Ahora
+                    </button>
+                    <button class="btn-buybox-whatsapp" id="btn-modal-whatsapp">
+                        <span>💬</span> Consultar al Taller por WhatsApp
+                    </button>
+
+                    <div class="buybox-secure-badge">
+                        🔒 Transacción 100% segura y encriptada
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 9. GAVETA LATERAL DEL CARRITO DE COMPRAS (CART DRAWER) -->
+    <!-- ================================================================= -->
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <div class="drawer-title-box">
+                <span class="drawer-cart-icon">🛒</span>
+                <h3>Tu Carrito de Repuestos</h3>
+            </div>
+            <button class="btn-close-drawer" id="btn-close-cart">&times;</button>
+        </div>
+
+        <div class="cart-drawer-free-shipping-bar">
+            <span>🎉 ¡Calificas para <strong>Envío Gratis en Juigalpa Urbano</strong>!</span>
+        </div>
+
+        <div class="cart-drawer-items" id="cart-items-container">
+            <!-- Items del carrito -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="cart-subtotal-row">
+                <span>Subtotal Repuestos:</span>
+                <strong id="cart-drawer-subtotal">C$ 0.00</strong>
+            </div>
+            <div class="cart-shipping-row">
+                <span>Envío Juigalpa Urbano:</span>
+                <strong class="text-green-free">GRATIS C$ 0.00</strong>
+            </div>
+            <div class="cart-total-row">
+                <span>Total a Pagar:</span>
+                <strong id="cart-drawer-total">C$ 0.00</strong>
+            </div>
+            <button class="btn-checkout-drawer" id="btn-proceed-checkout">
+                <span>🚀</span> Proceder al Pago (Pagas al Recibir o Transferencia)
+            </button>
+            <small class="cart-guarantee-note">🛡️ Garantía de ajuste perfecto y devolución sin complicaciones en Juigalpa.</small>
+        </div>
+    </aside>
+
+    <!-- ================================================================= -->
+    <!-- 10. MODAL DE CHECKOUT JUIGALPA (FINALIZAR COMPRA) -->
+    <!-- ================================================================= -->
+    <div class="modal-backdrop" id="checkout-modal">
+        <div class="modal-checkout-content">
+            <button class="modal-close-btn" id="btn-close-checkout">&times;</button>
+            
+            <div class="checkout-header-banner">
+                <div class="checkout-badge-pill">🔒 CHECKOUT SEGURO & ENTREGA RÁPIDA</div>
+                <h2>Finalizar Pedido — DeltaStore Juigalpa</h2>
+                <p>Completa tus datos de entrega en Juigalpa o municipios de Chontales.</p>
+            </div>
+
+            <form id="checkout-form" class="checkout-form-grid">
+                
+                <!-- Columna Izquierda: Datos del Cliente -->
+                <div class="checkout-col">
+                    <h3 class="col-title">1. Dirección de Entrega en Juigalpa</h3>
+
+                    <div class="form-group">
+                        <label for="cust-name">Nombre Completo *</label>
+                        <input type="text" id="cust-name" class="form-input" placeholder="Ej: Juan Carlos Pérez" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cust-phone">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="cust-phone" class="form-input" placeholder="Ej: 8888-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cust-email">Correo (Opcional)</label>
+                            <input type="email" id="cust-email" class="form-input" placeholder="cliente@correo.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cust-address">Dirección Exacta en Juigalpa *</label>
+                        <input type="text" id="cust-address" class="form-input" placeholder="Ej: Barrio Sandino, de la iglesia 2c arriba" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cust-reference">Punto de Referencia Conocido *</label>
+                        <input type="text" id="cust-reference" class="form-input" placeholder="Ej: Portón negro esquinero, frente a pulpería" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cust-notes">Notas para el Motorizado (Opcional)</label>
+                        <textarea id="cust-notes" class="form-textarea" rows="2" placeholder="Ej: Pago con billete de C$ 1,000 para llevar cambio..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Método de Pago & Resumen -->
+                <div class="checkout-col">
+                    <h3 class="col-title">2. Método de Pago</h3>
+
+                    <div class="payment-methods-grid">
+                        
+                        <!-- Opción 1: Efectivo Contraentrega -->
+                        <div class="payment-method-card active" data-method="contra_entrega">
+                            <input type="radio" name="metodo_pago" value="contra_entrega" checked>
+                            <div class="pm-info">
+                                <strong>💵 Pago Contra Entrega en Juigalpa</strong>
+                                <small>Pagas al motorizado en efectivo (Córdobas o Dólares) al recibir tus repuestos.</small>
+                            </div>
+                        </div>
+
+                        <!-- Opción 2: Transferencia Bancaria -->
+                        <div class="payment-method-card" data-method="transferencia_bancaria">
+                            <input type="radio" name="metodo_pago" value="transferencia_bancaria">
+                            <div class="pm-info">
+                                <strong>🏛️ Transferencia Bancaria / Móvil</strong>
+                                <small>BAC Credomatic, Banpro, Lafise o Billetera Móvil Kash.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel Datos Bancarios -->
+                    <div id="transfer-panel" class="bank-accounts-panel" style="display: none;">
+                        <h4>Cuentas Bancarias DeltaStore Juigalpa:</h4>
+                        
+                        <div class="bank-account-item">
+                            <div class="bank-brand">BAC C$ (Córdobas):</div>
+                            <code class="bank-number">365-889922-1</code>
+                            <button type="button" class="btn-copy-account" data-account="3658899221">Copiar</button>
+                        </div>
+
+                        <div class="bank-account-item">
+                            <div class="bank-brand">Banpro C$ (Córdobas):</div>
+                            <code class="bank-number">100-234567-8</code>
+                            <button type="button" class="btn-copy-account" data-account="1002345678">Copiar</button>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 12px;">
+                            <label for="bank-receipt-file">Comprobante de Transferencia (Foto o Captura)</label>
+                            <input type="file" id="bank-receipt-file" accept="image/*" class="form-input">
+                            <div id="receipt-preview-box" style="display:none; margin-top: 8px;">
+                                <img id="receipt-preview-img" src="" alt="Comprobante" style="max-height: 90px; border-radius: 6px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del Pedido -->
+                    <div class="checkout-summary-box">
+                        <div class="summary-line">
+                            <span>Subtotal Repuestos:</span>
+                            <strong id="summary-subtotal">C$ 0.00</strong>
+                        </div>
+                        <div class="summary-line">
+                            <span>Despacho Urbano Juigalpa:</span>
+                            <strong class="text-green-free">C$ 0.00 (Envío GRATIS)</strong>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total Final a Pagar:</span>
+                            <strong id="summary-total">C$ 0.00</strong>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit-order" id="btn-submit-order">
+                        <span>🚀</span> Confirmar y Enviar Pedido (Envío Gratis)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 11. MODAL DE ÉXITO & COMPROBANTE -->
+    <!-- ================================================================= -->
+    <div class="modal-backdrop" id="success-modal">
+        <div class="modal-success-box">
+            <div class="success-icon-animated">🎉</div>
+            <div class="success-badge-pill">¡PEDIDO REGISTRADO CON ÉXITO!</div>
+            <h2>¡Gracias por tu compra en DeltaStore!</h2>
+            <p>Tu orden ha sido registrada en el sistema del taller y ya está en preparación para entrega inmediata en Juigalpa.</p>
+
+            <div class="success-order-card">
+                <div class="soc-row">
+                    <span>Número de Orden Oficial:</span>
+                    <strong id="success-order-code" class="text-cyan-bold">ORD-2026-JUIG-0000</strong>
+                </div>
+                <div class="soc-row">
+                    <span>Total a Pagar:</span>
+                    <strong id="success-order-total" class="text-amber-bold">C$ 0.00</strong>
+                </div>
+                <div class="soc-row">
+                    <span>Tiempo Estimado de Entrega:</span>
+                    <strong class="text-green-bold">30 a 45 minutos</strong>
+                </div>
+            </div>
+
+            <div class="success-actions-row">
+                <button class="btn-whatsapp-confirm" id="btn-whatsapp-confirm">
+                    <span>💬</span> Notificar a Despacho por WhatsApp
+                </button>
+                <button class="btn-track-order" id="btn-success-track">
+                    <span>📍</span> Ver Rastreo en Vivo
+                </button>
+                <button class="btn-secondary-close" id="btn-success-close">
+                    Cerrar y Seguir Comprando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 12. MODAL DE RASTREO PÚBLICO DE PEDIDOS -->
+    <!-- ================================================================= -->
+    <div class="modal-backdrop" id="track-modal">
+        <div class="modal-track-content">
+            <button class="modal-close-btn" id="btn-close-track">&times;</button>
+            <div class="track-header-box">
+                <div class="track-icon-box">📍</div>
+                <h2>Rastreo de Despacho en Juigalpa</h2>
+                <p>Ingresa tu número de orden para consultar el estado de tu pedido en tiempo real.</p>
+            </div>
+
+            <form id="track-form" class="track-search-form">
+                <input type="text" id="track-input" placeholder="Ej: ORD-2026-JUIG-1234-5678 o POS-..." required>
+                <button type="submit" class="btn-track-submit">Buscar</button>
+            </form>
+
+            <div id="track-result-box" class="track-result-box" style="display: none;">
+                <!-- Línea de tiempo inyectada -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- 13. FOOTER AMAZON STYLE CON INFORMACIÓN CORPORATIVA -->
+    <!-- ================================================================= -->
+    <footer class="amazon-footer">
+        <a href="#" class="back-to-top" id="btn-back-to-top">▲ Volver arriba</a>
+        <div class="container amazon-footer-grid">
+            
+            <div class="footer-col">
+                <h4>Conócenos</h4>
+                <a href="#catalogo">Repuestos Originales en Juigalpa</a>
+                <a href="#garaje">Compatibilidad de Motos</a>
+                <a href="#">Taller Especializado Chontales</a>
+                <a href="/crm" target="_blank">Portal CRM & Backoffice</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Métodos de Pago & Seguridad</h4>
+                <a href="#">Efectivo al recibir en Juigalpa</a>
+                <a href="#">Transferencias BAC / Banpro / Lafise</a>
+                <a href="#">Billetera Móvil Kash</a>
+                <a href="#">Garantía DeltaStore 100%</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Atención al Motorista</h4>
+                <a href="https://wa.me/50588889999" target="_blank">WhatsApp Directo Mostrador</a>
+                <a href="#tracking">Rastreo de Pedidos</a>
+                <a href="#">Políticas de Cambio y Devolución</a>
+                <a href="#">Horarios: Lunes a Sábado 7:30 AM - 6:00 PM</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Sede Central DeltaStore</h4>
+                <p style="color:var(--text-secondary); font-size:0.85rem; line-height:1.6;">
+                    📍 Juigalpa, Chontales &bull; Nicaragua<br>
+                    De la Gasolinera Puma 1c abajo, frente a Repuestos El Éxito.<br>
+                    📞 Teléfono Mostrador: +505 8888-9999
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom-line">
+            <div class="container footer-bottom-content">
+                <span class="copyright">&copy; 2026 DeltaStore Nicaragua &bull; Impulsado por DELTALINK Neural Command Center</span>
+                <span class="footer-badges">🏍️ Calidad Certificada &bull; MySQL ACID Transaccional</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contenedor de Notificaciones Toast Dinámicas -->
+    <div id="delta-toast-container" class="delta-toast-container"></div>
+
+    <!-- Motores JS Modulares -->
+    <script src="/js/icons.js"></script>
+    <script src="/js/sound-engine.js"></script>
+    <script src="/js/confetti.js"></script>
+    <script src="/js/store.js"></script>
+
+    <script src="/js/ai-widget.js"></script>
+</body>
+</html>

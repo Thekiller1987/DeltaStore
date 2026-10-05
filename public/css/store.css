@@ -1,0 +1,2531 @@
+/* ==========================================================================
+   DELTASTORE — TIENDA EN LINEA DE REPUESTOS DE MOTOS (JUIGALPA)
+   Diseno Estilo Amazon E-Commerce & Cyberpunk High-Contrast Dark
+   ========================================================================== */
+
+:root {
+    --bg-main: #070b14;
+    --bg-surface: #0c1424;
+    --bg-card: #111c33;
+    --bg-card-hover: #162442;
+    --bg-glass: rgba(12, 20, 36, 0.92);
+    --bg-amazon-nav: #090f1d;
+    --bg-amazon-subnav: #0f182c;
+
+    --primary: #00f2fe;
+    --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+    --primary-glow: rgba(0, 242, 254, 0.35);
+
+    --amazon-gold: #f59e0b;
+    --amazon-gold-hover: #d97706;
+    --amazon-orange: #ff9900;
+    --accent-green: #10b981;
+    --accent-rose: #f43f5e;
+
+    --text-white: #ffffff;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-cyan: rgba(0, 242, 254, 0.3);
+    --border-gold: rgba(245, 158, 11, 0.4);
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.2);
+    --shadow-gold: 0 0 20px rgba(245, 158, 11, 0.25);
+    
+    --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, .brand-font {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.container {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ==========================================================================
+   1. BARRA SUPERIOR DE PROMOCIONES DELTAEXPRESS
+   ========================================================================== */
+.top-promo-banner {
+    background: linear-gradient(90deg, #05080f 0%, #0c1830 50%, #05080f 100%);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+    font-size: 0.8rem;
+    padding: 6px 0;
+    color: var(--text-secondary);
+}
+
+.top-promo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.promo-fire {
+    color: var(--amazon-gold);
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+.top-promo-content strong {
+    color: var(--primary);
+}
+
+.promo-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+}
+
+.promo-links .divider {
+    color: #334155;
+}
+
+.promo-track-link {
+    color: var(--amazon-gold);
+    font-weight: 600;
+}
+
+.promo-track-link:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+.promo-crm-link {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   2. NAVEGADOR PRINCIPAL ESTILO AMAZON
+   ========================================================================== */
+.amazon-header {
+    background-color: var(--bg-amazon-nav);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.amazon-header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+/* Logo */
+.amazon-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.amazon-brand-logo:hover {
+    border-color: var(--border-cyan);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.logo-icon-svg {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: var(--text-white);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.brand-accent {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.brand-sub {
+    font-size: 0.68rem;
+    color: var(--amazon-gold);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Enviar a Juigalpa */
+.nav-deliver-widget {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.nav-deliver-widget:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.deliver-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--amazon-gold);
+}
+
+.deliver-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.deliver-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.deliver-dest {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+/* Amazon Mega Search Box */
+.amazon-search-container {
+    flex: 1;
+    position: relative;
+    max-width: 780px;
+}
+
+.amazon-search-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    height: 42px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.amazon-search-box:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 14px var(--primary-glow);
+}
+
+.search-category-dropdown {
+    position: relative;
+    background: #e2e8f0;
+    border-right: 1px solid #cbd5e1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.search-category-dropdown select {
+    border: none;
+    background: transparent;
+    font-size: 0.8rem;
+    color: #1e293b;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    padding-right: 14px;
+    -webkit-appearance: none;
+    appearance: none;
+    max-width: 145px;
+}
+
+.cat-dropdown-arrow {
+    position: absolute;
+    right: 6px;
+    font-size: 0.65rem;
+    color: #64748b;
+    pointer-events: none;
+}
+
+.amazon-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 12px;
+    font-size: 0.92rem;
+    color: #0f172a;
+    background: transparent;
+    height: 100%;
+}
+
+.amazon-search-input::placeholder {
+    color: #64748b;
+    font-size: 0.86rem;
+}
+
+.btn-clear-search {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    padding: 0 8px;
+    transition: var(--transition);
+}
+
+.btn-clear-search:hover {
+    color: #ef4444;
+}
+
+.btn-amazon-search {
+    background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+    width: 46px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #070b14;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-amazon-search:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+#search-icon-container svg {
+    width: 20px;
+    height: 20px;
+}
+
+.search-suggestions-box {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    right: 0;
+    background: #0d1527;
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    z-index: 1100;
+    overflow: hidden;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: var(--transition);
+}
+
+.suggestion-item:hover {
+    background: rgba(0, 242, 254, 0.1);
+    color: #ffffff;
+}
+
+/* Acciones Derecha */
+.amazon-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-item-flag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-white);
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+}
+
+.nav-item-account, .nav-item-orders {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-item-account:hover, .nav-item-orders:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-line-1 {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.nav-line-2 {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.account-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #0d1629;
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-md);
+    padding: 12px 0;
+    min-width: 220px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 1200;
+}
+
+.nav-item-account:hover .account-dropdown-menu {
+    display: block;
+    animation: fadeInDown 0.2s ease-out;
+}
+
+.dropdown-header {
+    padding: 4px 16px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-header strong {
+    display: block;
+    color: #ffffff;
+    font-size: 0.88rem;
+}
+
+.dropdown-header small {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    font-size: 0.84rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--primary);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 6px 0;
+}
+
+/* Carrito Amazon */
+.amazon-cart-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.amazon-cart-button:hover {
+    border-color: var(--border-cyan);
+    background: rgba(0, 242, 254, 0.06);
+}
+
+.cart-icon-wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    color: var(--amazon-gold);
+}
+
+.cart-icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-badge-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--amazon-gold);
+    color: #070b14;
+    font-weight: 800;
+    font-size: 0.72rem;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+.cart-badge-count.bounce {
+    animation: cartBounce 0.4s ease;
+}
+
+.cart-text-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    text-align: left;
+}
+
+.cart-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.cart-price {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   SUB-NAVBAR AMAZON
+   ========================================================================== */
+.amazon-subnav {
+    background-color: var(--bg-amazon-subnav);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.84rem;
+}
+
+.subnav-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 40px;
+    overflow-x: auto;
+}
+
+.btn-subnav-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.btn-subnav-menu:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#amazon-menu-icon-container svg {
+    width: 18px;
+    height: 18px;
+}
+
+.subnav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.subnav-link {
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.subnav-link:hover {
+    color: var(--primary);
+    background: rgba(0, 242, 254, 0.08);
+}
+
+.subnav-right-highlight {
+    margin-left: auto;
+    font-size: 0.76rem;
+    color: var(--amazon-gold);
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   3. MENÚ LATERAL DESLIZABLE AMAZON (DRAWER SLIDEOUT)
+   ========================================================================== */
+.amazon-side-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.amazon-side-menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.amazon-side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 360px;
+    max-width: 85vw;
+    background: #090f1d;
+    border-right: 1px solid var(--border-cyan);
+    z-index: 2001;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.amazon-side-menu.open {
+    transform: translateX(0);
+}
+
+.side-menu-header {
+    background: #0d1629;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.side-user-icon {
+    font-size: 2rem;
+}
+
+.side-user-title h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.side-user-title small {
+    color: var(--text-muted);
+}
+
+.btn-close-side-menu {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.btn-close-side-menu:hover {
+    color: #ffffff;
+}
+
+.side-menu-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+}
+
+.side-menu-section {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.side-menu-section h4 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.side-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.side-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    transition: var(--transition);
+}
+
+.side-menu-link:hover {
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   4. HERO CAROUSEL & AMAZON OVERLAP CARDS
+   ========================================================================== */
+.amazon-hero-carousel {
+    position: relative;
+    padding-bottom: 80px;
+    background: linear-gradient(180deg, #070b14 0%, #0c1424 100%);
+}
+
+.hero-slide {
+    padding: 60px 0 120px;
+    position: relative;
+}
+
+.hero-slide-inner {
+    max-width: 820px;
+}
+
+.hero-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid var(--border-cyan);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 16px;
+}
+
+.hero-main-heading {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.text-cyan-glow {
+    color: var(--primary);
+    text-shadow: 0 0 20px var(--primary-glow);
+}
+
+.hero-sub-p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+    color: #070b14;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    transition: var(--transition);
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+.btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Amazon Cards Grid Overlap */
+.amazon-promo-overlap {
+    margin-top: -80px;
+    position: relative;
+    z-index: 10;
+}
+
+.amazon-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.amazon-card-tile {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.amazon-card-tile:hover {
+    border-color: rgba(0, 242, 254, 0.25);
+    transform: translateY(-3px);
+}
+
+.card-tile-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.card-mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.mini-tile {
+    background: #090f1d;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mini-tile:hover {
+    border-color: var(--primary);
+    background: rgba(0, 242, 254, 0.08);
+}
+
+.mini-tile-img {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 6px;
+}
+
+.mini-tile span {
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    display: block;
+    font-weight: 600;
+}
+
+.card-tile-link {
+    font-size: 0.82rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-top: auto;
+}
+
+.card-tile-link:hover {
+    text-decoration: underline;
+}
+
+/* Oferta Relámpago */
+.deal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.badge-deal {
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.deal-timer {
+    font-size: 0.74rem;
+    color: var(--amazon-gold);
+    font-weight: 700;
+}
+
+.deal-img-box {
+    width: 100%;
+    height: 120px;
+    background: #080d1a;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.deal-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.deal-discount {
+    color: #ef4444;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.deal-price {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.deal-old-price {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+/* Tarjeta Confianza */
+.trust-tile-text {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.trust-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.btn-whatsapp-tile {
+    background: #25d366;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.84rem;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.btn-whatsapp-tile:hover {
+    background: #1eb857;
+}
+
+/* ==========================================================================
+   5. SELECTOR DE GARAJE INTERACTIVO (YMM AMAZON GARAGE)
+   ========================================================================== */
+.garage-widget-section {
+    padding: 24px 0 10px;
+}
+
+.garage-panel-box {
+    background: #0a1122;
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.08);
+}
+
+.garage-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.garage-icon-box {
+    width: 38px;
+    height: 38px;
+    color: var(--amazon-gold);
+    flex-shrink: 0;
+}
+
+.garage-titles h2 {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.garage-titles .highlight {
+    color: var(--amazon-gold);
+}
+
+.garage-titles p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.garage-form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.garage-col {
+    flex: 1;
+    min-width: 220px;
+}
+
+.garage-col label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.garage-select {
+    width: 100%;
+    background: #0e172e;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.garage-select:focus {
+    border-color: var(--amazon-gold);
+    box-shadow: 0 0 10px var(--amazon-gold-glow);
+}
+
+.garage-col-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-apply-garage {
+    background: var(--amazon-gold);
+    color: #070b14;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.btn-apply-garage:hover {
+    background: var(--amazon-gold-hover);
+}
+
+.btn-reset-garage {
+    background: #334155;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.active-garage-badge {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid var(--amazon-gold);
+    color: var(--amazon-gold);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+}
+
+.active-garage-badge button {
+    color: var(--amazon-gold);
+    font-size: 1.1rem;
+    margin-left: 6px;
+}
+
+/* ==========================================================================
+   6. CUERPO PRINCIPAL: SIDEBAR DE FILTROS & PRODUCTOS
+   ========================================================================== */
+.catalog-section {
+    padding: 30px 0 60px;
+}
+
+.catalog-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* Sidebar Filtros Amazon */
+.amazon-sidebar-filters {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+}
+
+.filter-group {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-heading {
+    font-size: 0.95rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.category-pills-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.category-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: left;
+    transition: var(--transition);
+}
+
+.category-pill:hover, .category-pill.active {
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.filter-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.filter-checkbox-label input {
+    accent-color: var(--primary);
+}
+
+.price-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.price-input {
+    width: 75px;
+    background: #090f1d;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
+    color: #ffffff;
+    font-size: 0.82rem;
+    outline: none;
+}
+
+.btn-price-go {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+}
+
+.rating-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding: 4px 0;
+}
+
+.rating-filter-row:hover {
+    color: var(--amazon-gold);
+}
+
+.stars-gold {
+    color: var(--amazon-gold);
+    font-size: 0.9rem;
+}
+
+.sidebar-trust-box {
+    background: #090f1d;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+/* Área Central de Productos */
+.catalog-main-area {
+    flex: 1;
+}
+
+.results-control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    margin-bottom: 20px;
+}
+
+.results-info-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.select-sort-amazon {
+    background: #090f1d;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.84rem;
+    outline: none;
+    margin-left: 8px;
+}
+
+/* Grilla de Productos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta de Producto Amazon */
+.amazon-product-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    position: relative;
+}
+
+.amazon-product-card:hover {
+    border-color: rgba(0, 242, 254, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-top-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 5;
+}
+
+.badge-amazon-choice {
+    background: #002f36;
+    color: #00f2fe;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.badge-bestseller {
+    background: #e67a00;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+.card-img-wrapper {
+    height: 180px;
+    background: #080d19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.amazon-product-card:hover .card-img-wrapper img {
+    transform: scale(1.06);
+}
+
+.card-details {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-category-brand {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-title:hover {
+    color: var(--primary);
+}
+
+.card-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.amazon-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.stars-val {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--amazon-gold);
+    margin-left: 2px;
+}
+
+.rating-count-text {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+
+.card-delivery-promise {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.card-delivery-promise strong {
+    color: var(--primary);
+}
+
+.card-pricing-block {
+    margin-top: auto;
+    margin-bottom: 12px;
+}
+
+.price-main {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.price-symbol {
+    font-size: 0.85rem;
+    color: var(--amazon-gold);
+}
+
+.price-old {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 6px;
+}
+
+.card-actions-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+}
+
+.btn-card-add-cart {
+    background: var(--amazon-gold);
+    color: #070b14;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.btn-card-add-cart:hover {
+    background: var(--amazon-gold-hover);
+}
+
+.btn-card-quickview {
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 0.82rem;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: var(--transition);
+}
+
+.btn-card-quickview:hover {
+    background: #334155;
+}
+
+/* Skeletons */
+.product-skeleton-card {
+    height: 360px;
+    background: linear-gradient(90deg, #0e1628 25%, #182542 50%, #0e1628 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.4s infinite;
+    border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   7. MODAL AMAZON-STYLE PRODUCT VIEW & BUY BOX
+   ========================================================================== */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-amazon-content {
+    background: #0c1426;
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-lg);
+    max-width: 1100px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    transform: scale(0.95);
+    transition: transform 0.25s ease;
+}
+
+.modal-backdrop.open .modal-amazon-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.modal-close-btn:hover {
+    color: #ffffff;
+}
+
+.amazon-pview-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr 280px;
+    gap: 28px;
+}
+
+/* Galería */
+.amazon-pview-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gallery-main-img {
+    height: 300px;
+    background: #080d19;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gallery-badges-row {
+    display: flex;
+    gap: 8px;
+}
+
+.pview-badge {
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.pview-badge.oem {
+    background: rgba(0, 242, 254, 0.12);
+    color: var(--primary);
+    border: 1px solid var(--border-cyan);
+}
+
+.pview-badge.stock {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Centro */
+.pview-brand {
+    font-size: 0.78rem;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.pview-title {
+    font-size: 1.45rem;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 4px 0 10px;
+}
+
+.pview-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.pview-review-count {
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.pview-compat-box, .pview-code-box {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.pview-bullet-specs {
+    margin: 16px 0;
+    background: #080d1a;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+}
+
+.pview-bullet-specs h4 {
+    font-size: 0.88rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.pview-bullet-specs ul {
+    padding-left: 18px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pview-desc-text {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Amazon Buy Box */
+.amazon-pview-buybox {
+    background: #080d1c;
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.buybox-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.buybox-currency {
+    color: var(--amazon-gold);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.buybox-amount {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.buybox-oldprice {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.buybox-delivery-promise {
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+.buybox-stock-status {
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.buybox-seller-info {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 8px;
+}
+
+.buybox-qty-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.buybox-qty-picker label {
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.qty-stepper-amazon {
+    display: flex;
+    align-items: center;
+    background: #111a33;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.qty-stepper-amazon button {
+    width: 32px;
+    height: 32px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.qty-stepper-amazon span {
+    width: 36px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.btn-buybox-cart {
+    background: var(--amazon-gold);
+    color: #070b14;
+    font-weight: 800;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.btn-buybox-cart:hover {
+    background: var(--amazon-gold-hover);
+}
+
+.btn-buybox-now {
+    background: #ff9900;
+    color: #070b14;
+    font-weight: 800;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.btn-buybox-now:hover {
+    background: #e68a00;
+}
+
+.btn-buybox-whatsapp {
+    background: rgba(37, 211, 102, 0.12);
+    border: 1px solid #25d366;
+    color: #25d366;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+}
+
+.buybox-secure-badge {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* ==========================================================================
+   8. GAVETA LATERAL DEL CARRITO DE COMPRAS (CART DRAWER)
+   ========================================================================== */
+.cart-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 2500;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.cart-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 440px;
+    max-width: 90vw;
+    background: #090f1d;
+    border-left: 1px solid var(--border-cyan);
+    z-index: 2501;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-drawer.open {
+    transform: translateX(0);
+}
+
+.cart-drawer-header {
+    background: #0d1629;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-title-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-title-box h3 {
+    font-size: 1.15rem;
+    color: #ffffff;
+}
+
+.btn-close-drawer {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+}
+
+.cart-drawer-free-shipping-bar {
+    background: rgba(16, 185, 129, 0.12);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--accent-green);
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+.cart-drawer-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cart-item-row {
+    background: #0c1426;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-size: 0.86rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cart-item-price {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--amazon-gold);
+}
+
+.cart-item-stepper {
+    display: inline-flex;
+    align-items: center;
+    background: #060912;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 6px;
+}
+
+.qty-btn {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.qty-val {
+    width: 28px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.btn-remove-cart {
+    color: #64748b;
+    font-size: 0.95rem;
+    padding: 6px;
+    transition: var(--transition);
+}
+
+.btn-remove-cart:hover {
+    color: #ef4444;
+}
+
+.cart-drawer-footer {
+    background: #0d1629;
+    padding: 18px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-subtotal-row, .cart-shipping-row, .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+}
+
+.text-green-free {
+    color: var(--accent-green);
+}
+
+.cart-total-row {
+    font-size: 1.15rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 8px;
+}
+
+.cart-total-row strong {
+    color: var(--primary);
+}
+
+.btn-checkout-drawer {
+    background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+    color: #070b14;
+    font-weight: 900;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    transition: var(--transition);
+}
+
+.btn-checkout-drawer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+.cart-guarantee-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* ==========================================================================
+   9. CHECKOUT JUIGALPA & MODALES
+   ========================================================================== */
+.modal-checkout-content {
+    background: #0c1426;
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-lg);
+    max-width: 960px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+    position: relative;
+}
+
+.checkout-header-banner {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.checkout-badge-pill {
+    display: inline-block;
+    background: rgba(0, 242, 254, 0.12);
+    color: var(--primary);
+    border: 1px solid var(--border-cyan);
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+}
+
+.checkout-header-banner h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.checkout-header-banner p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.checkout-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.col-title {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    background: #090f1d;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    color: #ffffff;
+    font-size: 0.88rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.payment-methods-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.payment-method-card {
+    background: #090f1d;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-method-card.active {
+    border-color: var(--amazon-gold);
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.pm-info strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #ffffff;
+}
+
+.pm-info small {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.bank-accounts-panel {
+    background: #070c17;
+    border: 1px dashed rgba(245, 158, 11, 0.4);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 16px;
+}
+
+.bank-accounts-panel h4 {
+    font-size: 0.82rem;
+    color: var(--amazon-gold);
+    margin-bottom: 8px;
+}
+
+.bank-account-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0e172e;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+}
+
+.btn-copy-account {
+    background: #1e293b;
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.checkout-summary-box {
+    background: #080d19;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 16px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    margin-bottom: 6px;
+}
+
+.summary-line.total {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+    font-size: 1.15rem;
+    margin-bottom: 0;
+}
+
+.summary-line.total strong {
+    color: var(--amazon-gold);
+}
+
+.btn-submit-order {
+    width: 100%;
+    background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+    color: #070b14;
+    font-weight: 900;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    transition: var(--transition);
+}
+
+.btn-submit-order:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+/* Success Modal */
+.modal-success-box {
+    background: #0c1426;
+    border: 1px solid var(--accent-green);
+    border-radius: var(--radius-lg);
+    max-width: 520px;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+}
+
+.success-icon-animated {
+    font-size: 3.5rem;
+    margin-bottom: 8px;
+    animation: bouncePop 0.6s ease;
+}
+
+.success-badge-pill {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.modal-success-box h2 {
+    font-size: 1.45rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.modal-success-box p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.success-order-card {
+    background: #080d19;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.soc-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+}
+
+.text-cyan-bold { color: var(--primary); font-weight: 800; }
+.text-amber-bold { color: var(--amazon-gold); font-weight: 800; }
+.text-green-bold { color: var(--accent-green); font-weight: 800; }
+
+.success-actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-whatsapp-confirm {
+    background: #25d366;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.btn-track-order {
+    background: #1e293b;
+    border: 1px solid var(--border-cyan);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+}
+
+.btn-secondary-close {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    padding: 6px;
+}
+
+/* Modal Rastreo */
+.modal-track-content {
+    background: #0c1426;
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-lg);
+    max-width: 580px;
+    width: 100%;
+    padding: 28px;
+    position: relative;
+}
+
+.track-header-box {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.track-icon-box {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+}
+
+.track-search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.track-search-form input {
+    flex: 1;
+    background: #080d19;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: #ffffff;
+    outline: none;
+}
+
+.btn-track-submit {
+    background: var(--primary);
+    color: #070b14;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   10. TOAST NOTIFICATIONS DINÁMICAS
+   ========================================================================== */
+.delta-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.delta-toast {
+    background: #0e172e;
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-size: 0.86rem;
+    pointer-events: auto;
+    animation: toastSlideIn 0.3s ease-out;
+}
+
+.delta-toast.success {
+    border-left-color: var(--accent-green);
+}
+
+.delta-toast.warning {
+    border-left-color: var(--amazon-gold);
+}
+
+/* ==========================================================================
+   11. FOOTER AMAZON STYLE
+   ========================================================================== */
+.amazon-footer {
+    background: #070b14;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.back-to-top {
+    display: block;
+    background: #111b33;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.back-to-top:hover {
+    background: #19274a;
+}
+
+.amazon-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 0.96rem;
+    margin-bottom: 14px;
+}
+
+.footer-col a {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+    transition: var(--transition);
+}
+
+.footer-col a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.footer-bottom-line {
+    background: #04070d;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 16px 0;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   12. ANIMACIONES KEYFRAME
+   ========================================================================== */
+@keyframes skeletonShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.4)); }
+    100% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8)); }
+}
+
+@keyframes cartBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+@keyframes toastSlideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bouncePop {
+    0% { transform: scale(0.6); opacity: 0; }
+    70% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .amazon-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .amazon-pview-grid {
+        grid-template-columns: 1fr;
+    }
+    .catalog-layout {
+        flex-direction: column;
+    }
+    .amazon-sidebar-filters {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .amazon-header-row {
+        flex-wrap: wrap;
+    }
+    .amazon-search-container {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+    }
+    .amazon-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .checkout-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .amazon-footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

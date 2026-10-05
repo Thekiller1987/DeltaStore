@@ -1,0 +1,18 @@
+{
+  "name": "DeltaStore - Repuestos de Moto Juigalpa",
+  "short_name": "DeltaStore",
+  "description": "Tu tienda en línea de repuestos y accesorios de moto con envío gratis en Juigalpa y pagos contra entrega, transferencia o tarjeta.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logo_deltastore.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
