@@ -2529,3 +2529,40 @@ button {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+
+/* ==========================================================================
+   MEJORA DE CLICABILIDAD & EFECTOS HOVER PREMIUM EN TARJETAS DE PRODUCTO
+   ========================================================================== */
+.amazon-product-card {
+    cursor: pointer !important;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.amazon-product-card:hover {
+    border-color: rgba(0, 242, 254, 0.45) !important;
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 242, 254, 0.18) !important;
+}
+
+.amazon-product-card:active {
+    transform: translateY(-2px) !important;
+}
+
+.btn-card-add-cart {
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-card-add-cart:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
+}
+
+/* Modal Buybox visible en apertura */
+.modal-backdrop.open {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}

@@ -489,10 +489,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (items.length === 0) {
             productsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #0c1424; border-radius: 12px;">
-                    <div style="font-size: 3rem; margin-bottom: 12px;">🔍</div>
-                    <h3 style="color:#ffffff; margin-bottom: 6px;">No se encontraron repuestos con los filtros aplicados</h3>
-                    <p style="color:#94a3b8; font-size: 0.9rem;">Prueba buscando por marca de moto, código genérico o limpiando el filtro de búsqueda.</p>
+                <div style="grid-column: 1 / -1; text-align: center; padding: 50px 24px; background: linear-gradient(180deg, #0c1426 0%, #080d1a 100%); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+                    <div style="font-size: 3rem; margin-bottom: 12px; filter: drop-shadow(0 0 12px #00f2fe);">🏪</div>
+                    <div style="display:inline-block; background:rgba(0,242,254,0.12); color:#00f2fe; padding:4px 14px; border-radius:999px; font-size:0.75rem; font-weight:800; margin-bottom:12px; border:1px solid rgba(0,242,254,0.3);">
+                        ⚡ BODEGA CENTRAL JUIGALPA
+                    </div>
+                    <h2 style="color:#ffffff; font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">
+                        ¡Catálogo Listo para Nuevos Repuestos!
+                    </h2>
+                    <p style="color:#94a3b8; font-size: 0.95rem; max-width: 620px; margin: 0 auto 20px auto; line-height: 1.5;">
+                        Estamos cargando repuestos genuinos desde el sistema ERP. Si necesitas una pieza urgente, solicítala de inmediato por WhatsApp a nuestro taller o ingresa productos desde el panel administrativo.
+                    </p>
+                    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:28px;">
+                        <a href="https://wa.me/50589654945?text=¡Hola%20DeltaStore!%20Busco%20un%20repuesto%20para%20mi%20moto." target="_blank" style="background:#25d366; color:#040914; font-weight:800; padding:12px 22px; border-radius:8px; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:0.9rem; box-shadow:0 6px 20px rgba(37,211,102,0.35);">
+                            <span>💬</span> Pedir por WhatsApp (+505 8965-4945)
+                        </a>
+                        <a href="http://localhost:3006/" target="_blank" style="background:linear-gradient(135deg, #00f2fe 0%, #0284c7 100%); color:#040914; font-weight:800; padding:12px 22px; border-radius:8px; text-decoration:none; display:flex; align-items:center; gap:8px; font-size:0.9rem; box-shadow:0 6px 20px rgba(0,242,254,0.35);">
+                            <span>💼</span> Acceso ERP Mostrador (Crear Repuestos)
+                        </a>
+                    </div>
+                    <div style="font-size:0.8rem; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; font-weight:700;">
+                        Departamentos de Repuestos Disponibles para Ingreso:
+                    </div>
+                    <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; max-width:800px; margin:0 auto;">
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">🏍️ Motor & Cilindros</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">🛑 Frenos & Discos</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">⛓️ Kits de Arrastre</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">🛵 Suspensión & Monoshock</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">💡 Eléctrico & Bujías</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">🛞 Llantas Trocha & Pista</span>
+                        <span style="background:rgba(255,255,255,0.05); color:#cbd5e1; padding:6px 12px; border-radius:6px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1);">🛢️ Aceites Castrol & Motul</span>
+                    </div>
                 </div>
             `;
             return;
@@ -501,6 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach((p, idx) => {
             const card = document.createElement('div');
             card.className = 'amazon-product-card';
+            card.style.cursor = 'pointer';
+            card.setAttribute('data-product-id', p.id);
 
             const priceNum = Number(p.precio_oferta || p.precio || 0);
             const hasOffer = p.precio_oferta && Number(p.precio_oferta) < Number(p.precio);
@@ -560,15 +589,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Eventos
-            card.querySelector('.btn-card-add-cart').addEventListener('click', (e) => {
-                e.stopPropagation();
-                addToCart(p, 1);
+            // Evento click en toda la tarjeta para abrir ficha técnica / modal
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.btn-card-add-cart')) return;
+                openProductModal(p);
             });
 
-            card.querySelector('.card-img-wrapper').addEventListener('click', () => openProductModal(p));
-            card.querySelector('.card-title').addEventListener('click', () => openProductModal(p));
-            card.querySelector('.btn-card-quickview').addEventListener('click', () => openProductModal(p));
+            // Botón Agregar al carrito con animación inmediata y apertura de gaveta
+            const btnAdd = card.querySelector('.btn-card-add-cart');
+            if (btnAdd) {
+                btnAdd.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    addToCart(p, 1);
+
+                    const origText = btnAdd.innerHTML;
+                    btnAdd.innerHTML = '<span>✓</span> Agregado';
+                    btnAdd.style.background = '#10b981';
+                    btnAdd.style.color = '#ffffff';
+                    setTimeout(() => {
+                        btnAdd.innerHTML = origText;
+                        btnAdd.style.background = '';
+                        btnAdd.style.color = '';
+                    }, 1200);
+
+                    // Abrir carrito lateral automáticamente
+                    openCartDrawer();
+                });
+            }
 
             productsGrid.appendChild(card);
         });
@@ -810,8 +858,42 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
-        if (productModal) productModal.classList.add('open');
+        if (productModal) {
+            productModal.classList.add('open');
+            productModal.style.display = 'flex';
+            productModal.style.opacity = '1';
+            productModal.style.pointerEvents = 'auto';
+            document.body.style.overflow = 'hidden';
+        }
     }
+
+    function closeProductModalSafe() {
+        if (productModal) {
+            productModal.classList.remove('open');
+            productModal.style.display = 'none';
+            productModal.style.opacity = '0';
+            productModal.style.pointerEvents = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (btnCloseProductModal) {
+        btnCloseProductModal.addEventListener('click', closeProductModalSafe);
+    }
+
+    if (productModal) {
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) {
+                closeProductModalSafe();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProductModalSafe();
+        }
+    });
 
     if (btnQtyMinus) {
         btnQtyMinus.addEventListener('click', () => {
